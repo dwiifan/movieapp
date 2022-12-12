@@ -48,9 +48,10 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Movie DB',
         theme: ThemeData(),
         home: MoviePage(),
+        debugShowCheckedModeBanner: false,
       ),
     );
   }

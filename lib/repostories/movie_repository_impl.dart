@@ -45,7 +45,7 @@ class MovieRepositoryImpl implements MovieRepository {
         // disini kita menampilakn error tersebut karna apa
       }
 
-      return Left('Another error on get discover movie');
+      return const Left('Another error on get discover movie');
       //disini kita tidak bisa mengambil api
 
     }
