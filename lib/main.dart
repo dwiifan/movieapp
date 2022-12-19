@@ -4,6 +4,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:movieapp/app_constants.dart';
 import 'package:movieapp/pages/movie_page.dart';
 import 'package:movieapp/providers/movie_get_discover_provider.dart';
+import 'package:movieapp/providers/movie_get_top_reted_provider.dart';
 import 'package:movieapp/repostories/movie_repository.dart';
 import 'package:movieapp/repostories/movie_repository_impl.dart';
 import 'package:provider/provider.dart';
@@ -45,6 +46,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (_) => MovieGetDiscoverProvider(movieRepository),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => MovieGetTopRatedProvider(movieRepository),
         ),
       ],
       child: MaterialApp(

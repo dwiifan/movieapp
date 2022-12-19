@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:movieapp/app_constants.dart';
 
 class ImageNetworkWidget extends StatelessWidget {
-  final String imageSrc;
+  final String? imageSrc;
   final double height;
   final double width;
   final double radius;
 
   const ImageNetworkWidget({
     super.key,
-    required this.imageSrc,
+    this.imageSrc,
     required this.height,
     required this.width,
     this.radius = 0.0,
