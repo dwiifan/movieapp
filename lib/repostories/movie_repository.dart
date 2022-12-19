@@ -10,4 +10,7 @@ abstract class MovieRepository {
   Future<Either<String, MovieResponseModel>> getTopRated({int page = 1});
   // Jadi disini menggunakan fungsi Future dan mengembalikan MovieResponseModel karna di sana ada page/results/totalPages
   //Fungsi Either dari package dartz (L) artinya gagal (R) artinya berhasil, karna disini kita gunakan untuk menampilkan error maka kita gunakan String disampingnya
+  Future<Either<String, MovieResponseModel>> getNowPlaying({int page = 1});
+  // Jadi disini menggunakan fungsi Future dan mengembalikan MovieResponseModel karna di sana ada page/results/totalPages
+  //Fungsi Either dari package dartz (L) artinya gagal (R) artinya berhasil, karna disini kita gunakan untuk menampilkan error maka kita gunakan String disampingnya
 }

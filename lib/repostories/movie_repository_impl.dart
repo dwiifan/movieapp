@@ -73,4 +73,28 @@ class MovieRepositoryImpl implements MovieRepository {
       return Left('Another error on get discover movie');
     }
   }
+
+  @override
+  Future<Either<String, MovieResponseModel>> getNowPlaying(
+      {int page = 1}) async {
+    try {
+      final result = await _dio.get(
+        '/movie/now_playing',
+        queryParameters: {'page': page},
+      );
+
+      if (result.statusCode == 200 && result.data != null) {
+        final model = MovieResponseModel.fromMap(result.data);
+        return Right(model);
+      }
+
+      return left('Error get now playing movies');
+    } on DioError catch (e) {
+      if (e.response != null) {
+        Left(e.response.toString());
+      }
+
+      return Left('Another error on get now playing movie');
+    }
+  }
 }

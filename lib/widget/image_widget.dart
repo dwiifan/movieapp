@@ -24,6 +24,15 @@ class ImageNetworkWidget extends StatelessWidget {
         height: height,
         width: width,
         fit: BoxFit.cover,
+        loadingBuilder: (context, child, loadingProgress) {
+          return Container(
+            height: height,
+            width: width,
+            color: Colors.black26,
+            child: child,
+          );
+        },
+
         //Disini kita menampilkan error jika data image tersebut tidak dapat di tarik
         errorBuilder: (_, __, ___) {
           return SizedBox(

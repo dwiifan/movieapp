@@ -4,6 +4,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:movieapp/app_constants.dart';
 import 'package:movieapp/pages/movie_page.dart';
 import 'package:movieapp/providers/movie_get_discover_provider.dart';
+import 'package:movieapp/providers/movie_get_now_playing_provider.dart';
 import 'package:movieapp/providers/movie_get_top_reted_provider.dart';
 import 'package:movieapp/repostories/movie_repository.dart';
 import 'package:movieapp/repostories/movie_repository_impl.dart';
@@ -50,6 +51,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => MovieGetTopRatedProvider(movieRepository),
         ),
+        ChangeNotifierProvider(
+          create: (_) => MovieGetNowPlayingProvider(movieRepository),
+        )
       ],
       child: MaterialApp(
         title: 'Movie DB',

@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:movieapp/models/movie_model.dart';
 import 'package:movieapp/providers/movie_get_discover_provider.dart';
+import 'package:movieapp/providers/movie_get_now_playing_provider.dart';
 import 'package:movieapp/providers/movie_get_top_reted_provider.dart';
 import 'package:movieapp/widget/item_movie_widget.dart';
 import 'package:provider/provider.dart';
 
-enum TypeMovies { discover, topRated }
+enum TypeMovies { discover, topRated, nowPlaying }
 
 class MoviePaginationPage extends StatefulWidget {
   const MoviePaginationPage({super.key, required this.type});
@@ -46,7 +47,14 @@ class _MoviePaginationPageState extends State<MoviePaginationPage> {
                 );
             break;
           case TypeMovies.topRated:
-            context.read<MovieGetTopRatedProvider>().getTopRatedWithPagination(
+            context.read<MovieGetTopRatedProvider>().getTopRatedWithPaging(
+                  context,
+                  pagingController: _pagingController,
+                  page: pageKey,
+                );
+            break;
+          case TypeMovies.nowPlaying:
+            context.read<MovieGetNowPlayingProvider>().getNowPlayingWithPaging(
                   context,
                   pagingController: _pagingController,
                   page: pageKey,
@@ -69,6 +77,9 @@ class _MoviePaginationPageState extends State<MoviePaginationPage> {
 
             case TypeMovies.topRated:
               return const Text('Top Rated Movies');
+
+            case TypeMovies.nowPlaying:
+              return const Text('Now Playing Movies');
           }
         }),
         backgroundColor: Colors.white,

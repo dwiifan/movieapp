@@ -13,7 +13,7 @@ class ComponentsTopRatedMovie extends StatefulWidget {
 
 class _WidgetDiscoverMovieState extends State<ComponentsTopRatedMovie> {
   //Nah disini kita mengambil data yg ada di Provider
-  //Kemudian kita panggil nama variable yg ada di MovieGetDiscoverProvider yaitu getDicover
+  //Kemudian kita panggil nama variable yg ada di MovieGetDiscoverProvider yaitu getTopRated
   @override
   //Fungsi initState digunakan untuk memanggil data cukup 1 kali di dalam class WidgetDiscoverMovie
   void initState() {
