@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:movieapp/models/movie_detail_model.dart';
 import 'package:movieapp/models/movie_model.dart';
 
 abstract class MovieRepository {
@@ -11,6 +12,9 @@ abstract class MovieRepository {
   // Jadi disini menggunakan fungsi Future dan mengembalikan MovieResponseModel karna di sana ada page/results/totalPages
   //Fungsi Either dari package dartz (L) artinya gagal (R) artinya berhasil, karna disini kita gunakan untuk menampilkan error maka kita gunakan String disampingnya
   Future<Either<String, MovieResponseModel>> getNowPlaying({int page = 1});
+  // Jadi disini menggunakan fungsi Future dan mengembalikan MovieResponseModel karna di sana ada page/results/totalPages
+  //Fungsi Either dari package dartz (L) artinya gagal (R) artinya berhasil, karna disini kita gunakan untuk menampilkan error maka kita gunakan String disampingnya
+  Future<Either<String, MovieDetailModel>> getDetail({required int id});
   // Jadi disini menggunakan fungsi Future dan mengembalikan MovieResponseModel karna di sana ada page/results/totalPages
   //Fungsi Either dari package dartz (L) artinya gagal (R) artinya berhasil, karna disini kita gunakan untuk menampilkan error maka kita gunakan String disampingnya
 }

@@ -9,6 +9,7 @@ class ItemMovieWidget extends Container {
   final double widthBackdrop;
   final double heightPoster;
   final double widthPoster;
+  final void Function()? onTap;
 
   ItemMovieWidget({
     super.key,
@@ -17,6 +18,7 @@ class ItemMovieWidget extends Container {
     required this.widthBackdrop,
     required this.heightPoster,
     required this.widthPoster,
+    this.onTap,
   });
 
   //Memberi border radius pada sisi container
@@ -99,6 +101,15 @@ class ItemMovieWidget extends Container {
                   ],
                 )
               ],
+            ),
+          ),
+          //Fungsinya untuk memberi efek jika container tersebut sedang di klik
+          Positioned.fill(
+            child: Material(
+              color: Colors.transparent,
+              child: InkWell(
+                onTap: onTap,
+              ),
             ),
           ),
         ],

@@ -1,58 +1,38 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:movieapp/app_constants.dart';
+import 'package:movieapp/injector.dart';
 import 'package:movieapp/pages/movie_page.dart';
 import 'package:movieapp/providers/movie_get_discover_provider.dart';
 import 'package:movieapp/providers/movie_get_now_playing_provider.dart';
 import 'package:movieapp/providers/movie_get_top_reted_provider.dart';
-import 'package:movieapp/repostories/movie_repository.dart';
-import 'package:movieapp/repostories/movie_repository_impl.dart';
 import 'package:provider/provider.dart';
 
 void main() {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-
-  //Disini kita buat injek"nya secara manual
-  //oke disini kita ambil data yg ada di MovieRepositoryImpl jangan lupa kita buat jga DIOnya agar bisa digunakan _dionya
-  //disini kita buat juga dioOptionnya agar dionya dapat menarik data dengan yg kita mau, kemudian kita masukkan ke DIOnya
-  final dioOptions = BaseOptions(
-    baseUrl: AppConstants.baseUrl,
-    queryParameters: {
-      'api_key': AppConstants.apiKey,
-    },
-  );
-
-  final Dio dio = Dio(dioOptions);
-  final MovieRepository movieRepository = MovieRepositoryImpl(dio);
-
-  runApp(MyApp(
-    movieRepository: movieRepository,
-  ));
+  //masukkan class setup() agar data yg ada di injektor kita digunakan
+  setup();
+  runApp(const MyApp());
   FlutterNativeSplash.remove();
 }
 
 class MyApp extends StatelessWidget {
-  final MovieRepository movieRepository;
-  const MyApp({
-    super.key,
-    required this.movieRepository,
-  });
+  const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        //Kemudian data yg ada di injector kita ambil dengna menggunakan sl
         ChangeNotifierProvider(
-          create: (_) => MovieGetDiscoverProvider(movieRepository),
+          create: (_) => sl<MovieGetDiscoverProvider>(),
         ),
         ChangeNotifierProvider(
-          create: (_) => MovieGetTopRatedProvider(movieRepository),
+          create: (_) => sl<MovieGetTopRatedProvider>(),
         ),
         ChangeNotifierProvider(
-          create: (_) => MovieGetNowPlayingProvider(movieRepository),
+          create: (_) => sl<MovieGetNowPlayingProvider>(),
         )
       ],
       child: MaterialApp(

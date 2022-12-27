@@ -49,6 +49,7 @@ class _ComponentMovieNowPlayingState extends State<ComponentMovieNowPlaying> {
               );
             }
 
+            //Disini menggunakan ListView.separated karna kita membutuhkan separatorBuilder untuk mengukur lebarnya
             if (provider.movies.isNotEmpty) {
               return ListView.separated(
                 scrollDirection: Axis.horizontal,
@@ -58,7 +59,7 @@ class _ComponentMovieNowPlayingState extends State<ComponentMovieNowPlaying> {
                 itemBuilder: (_, index) {
                   final movie = provider.movies[index];
                   return Container(
-                    width: 300,
+                    width: MediaQuery.of(context).size.width * 0.9,
                     height: 200,
                     padding: EdgeInsets.all(12.0),
                     decoration: BoxDecoration(

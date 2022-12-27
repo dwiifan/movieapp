@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:movieapp/pages/movie_detail_page.dart';
 import 'package:movieapp/providers/movie_get_discover_provider.dart';
 import 'package:movieapp/widget/item_movie_widget.dart';
 import 'package:provider/provider.dart';
@@ -66,6 +67,16 @@ class _WidgetDiscoverMovieState extends State<ComponentsDiscoverMovie> {
                   widthBackdrop: double.infinity,
                   heightPoster: 160,
                   widthPoster: 100,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) {
+                          return MovieDetailPage(id: movie.id);
+                        },
+                      ),
+                    );
+                  },
                 );
               },
               options: CarouselOptions(
