@@ -88,7 +88,7 @@ class _MoviePaginationPageState extends State<MoviePaginationPage> {
       ),
       //Disini kita menampilkan datanya ke ui
       body: PagedListView.separated(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         pagingController: _pagingController,
         //Disini itemnya kita ambil dari MovieModel
         builderDelegate: PagedChildBuilderDelegate<MovieModel>(

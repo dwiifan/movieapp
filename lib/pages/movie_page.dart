@@ -21,7 +21,7 @@ class MoviePage extends StatelessWidget {
                   backgroundColor: Colors.transparent,
                   child: Image.asset('assets/images/logo.png'),
                 ),
-                Text('Movie DB'),
+                const Text('Movie DB'),
               ],
             ),
             floating: true,
@@ -99,7 +99,7 @@ class _WidgetTitle extends SliverToBoxAdapter {
           children: [
             Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 18.0,
                 fontWeight: FontWeight.bold,
               ),
